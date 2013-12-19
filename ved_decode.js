@@ -1,5 +1,5 @@
 /**
-  This file is part of VED DECODE
+  This file is part of VED DECODE v1.0
 
   Copyright © 2013 Deed Poll Office Ltd, UK
 
@@ -32,9 +32,10 @@ function ved_decode(ved) {
             ret[keys[match[1]] || match[1]] = parseInt(match[2], 10);
         return ret;
     }
-    var vedBinary = atob(ved.replace(/_/, '+').replace('-', '/').substr(1));
-    re = /([\x80-\xff]*[\x00-\x7f])([\x80-\xff]*[\x00-\x7f])/g;
-    while ((match = re.exec(vedBinary)) !== null)
+    ved = ved.replace(/_/, '+').replace('-', '/');
+    ved = window.atob((ved + "===").slice(1, ved.length + 3 - (ved.length + 2) % 4));
+    re  = /([\x80-\xff]*[\x00-\x7f])([\x80-\xff]*[\x00-\x7f])/g;
+    while ((match = re.exec(ved)) !== null)
         ret[varint_decode(match[1]) >> 3] = varint_decode(match[2]);
     return ret;
     function varint_decode(vint) {
