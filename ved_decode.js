@@ -1,15 +1,13 @@
 /**
   This file is part of VED DECODE v1.0
 
-  Copyright © 2013 Deed Poll Office Ltd, UK
+  Copyright 2013 Deed Poll Office Ltd, UK
 
-  VED DECODE is free software: you can redistribute it and/or modify
-  it under the terms of the Apache License, Version 2.0 (the "License").
-  You may not use this work except in compliance with the License.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-  You should have received a copy of the License in the LICENSE file,
-  along with this program.  If not, you can get a copy of the license at:
-  <http://www.apache.org/licenses/LICENSE-2.0>.
+      http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
