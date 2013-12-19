@@ -3,7 +3,7 @@ VED DECODE
 
 ## Requirements
 
-For Internet Explorer 9 and below, you’ll need to include the [http://code.google.com/p/stringencoders/source/browse/trunk/javascript/base64.js](base64) library.
+For Internet Explorer 9 and below, you’ll need to include the [base64](http://code.google.com/p/stringencoders/source/browse/trunk/javascript/base64.js) library.
 
 ## Example of use
 
