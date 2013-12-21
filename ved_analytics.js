@@ -35,7 +35,7 @@ var VedDecode = VedDecode || {};
 	    '232' : 'book search result',
 	    '235' : 'book search result thumbnail',
 	    '1140': 'book search result author link',
-	    '245' : 'image search result in basic (non-javascript) image search, or image result in universal search',
+	    '245' : 'image search result in basic image search / universal search',
 	    '429' : 'image search result [probably not in use any more]',
 	    '3588': 'image search result (thumbnail)',
 	    '3598': 'image search result preview title link',
@@ -62,24 +62,25 @@ var VedDecode = VedDecode || {};
 	    '2847': 'authorship “by [author]” link',
 	    '2459': 'knowledge graph link',
 	    '3836': 'knowledge graph main image',
-	    '1732': 'knowledge graph repeated sub-link (e.g. football team squad players, album track listings)',
+	    '1732': 'knowledge graph repeated sub-link (e.g. album track listing)',
 	    '1617': 'adword (i.e. sponsored search result)',
 	    '706' : 'adword sitelink',
 	    '5158': 'adword one-line sitelink',
-	    '1987': 'sponsored shopping result (in main column of universal search results)',
-	    '1986': 'sponsored shopping result thumbnail (in main column of universal search results)',
-	    '1908': 'sponsored shopping result (in right-hand column of universal search results)',
-	    '1907': 'sponsored shopping result thumbnail (in right-hand column of universal search results)'
+	    '1987': 'sponsored shopping result (main column of universal search)',
+	    '1986': 'sponsored shopping result thumbnail (main column of universal search)',
+	    '1908': 'sponsored shopping result (right column of universal search)',
+	    '1907': 'sponsored shopping result thumbnail (right column of universal search)'
 	    },
         matches = w.document.referrer.match(/[\/.]google\..*[?&]ved=([a-zA-Z0-9_-]+)\b/);
 
     if (_.ved = matches && matches.length && ved_decode(matches[1]) || null) {
-	_.linkIndex         = _.ved[1] || null;
+	_.linkIndex         = getOneIndexedVal(_.ved[1]);
 	_.linkType          = linkTypes[_.ved[2]] || _.ved[2] || null;
-	_.resultPosition    = _.ved[6] !== undefined ? _.ved[6] + 1 : null;
-	_.subResultPosition = _.ved[5] !== undefined ? _.ved[5] + 1 : null;
+	_.resultPosition    = getOneIndexedVal(_.ved[6]);
+	_.subResultPosition = getOneIndexedVal(_.ved[5]);
 	_.page              = (_.ved[7] || 0) / 10 + 1;
     }
+    function getOneIndexedVal(val) { return val != undefined ? val + 1 : null; }
 
     function ved_decode(ved) {
 	var keys = { t: 2, r: 6, s: 7, i: 1 }, ret = {}, re, match;
