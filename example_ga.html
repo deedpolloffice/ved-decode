@@ -7,17 +7,15 @@
 </head>
 <body>
 
-<!--
-    You can leave these script elements as they appear here — referring to
-    <http://veddecode.opensource.dpo.org.uk>.  (They’re actually hosted by github.)
-    However, if your website uses HTTPS, you’ll need to host them yourself.
-    -->
+<!-- Include both these scripts or copy them into your main JavaScript file -->
 <!--[if lt IE 10]>
     <script type="text/javascript" src="http://veddecode.opensource.dpo.org.uk/js/base64-1.0.min.js"></script>
 <![endif]-->
 <script type="text/javascript" src="http://veddecode.opensource.dpo.org.uk/js/ved_analytics-1.0.min.js"></script>
 
 <script type="text/javascript">
+    // Use this code with (the old) version of Analytics (ga.js)
+
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-XXXXXXX-X']); // Your Analytics property ID
 
@@ -30,10 +28,10 @@
             { slot: 4, name: 'Google sub-result position', v: 'subResultPosition' },
             { slot: 5, name: 'Google page',                v: 'page'              }
             ];
-        if (w._gaq && w.VedDecode && w.VedDecode.ved) {
+        if (_gaq && w.VedDecode && w.VedDecode.ved) {
             for (var i = 0, val; i < customVars.length; ++i) {
                 val = w.VedDecode[customVars[i].v];
-                w._gaq.push([
+                _gaq.push([
                     '_setCustomVar',
                     customVars[i].slot,
                     customVars[i].name,
@@ -44,8 +42,9 @@
         }
     })(window);
 
-    _gaq.push(['_trackPageview']); // (This needs to go last.)
+    _gaq.push(['_trackPageview']); // Record the pageview last of all
 
+    // Standard Google code to load ga.js
     (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
