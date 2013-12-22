@@ -18,7 +18,7 @@
 
 var VedDecode = VedDecode || {};
 (function(_, w) {
-    if (!w.atob) w.atob = base64.decode;
+    if (!w.atob) w.atob = w.base64.decode;
     var linkTypes = {
 	    '22'  : 'normal (universal) search result',
 	    '1146': 'normal result thumbnail (e.g. for an application, recipe, etc.)',
