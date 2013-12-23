@@ -28,7 +28,7 @@
             { slot: 4, name: 'Google sub-result position', v: 'subResultPosition' },
             { slot: 5, name: 'Google page',                v: 'page'              }
             ];
-        if (_gaq && w.VedDecode && w.VedDecode.ved) {
+        if (w.VedDecode && w.VedDecode.ved) {
             for (var i = 0, val; i < customVars.length; ++i) {
                 val = w.VedDecode[customVars[i].v];
                 _gaq.push([
