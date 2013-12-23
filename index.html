@@ -36,7 +36,7 @@
 <p>The ved decode library consists of:</p>
 
 <ul>
-    <li>simple functions in various languages (currently JavaScript and PHP)—which you can use to decode a <strong>ved</strong> code into its constituent parameters
+    <li>simple functions in various languages (currently JavaScript and PHP)—which you can use to decode a <a href="http://blog.deed-poll-office.org.uk/articles/decoding-ved-parameter"><strong>ved</strong> code</a> into its constituent parameters
     <li>JavaScript code which you can use to decode ved codes and import the data into Google Analytics
     <li>examples of how to go about using the code
 </ul>
@@ -49,19 +49,18 @@
 </p>
 
 <ul>
-    <li>JavaScript
-    <li>PHP
+    <li><a href="https://github.com/deedpolloffice/ved-decode/blob/master/ved_decode.js">JavaScript</a>
+    <li><a href="https://github.com/deedpolloffice/ved-decode/blob/master/ved_decode.php">PHP</a>
 </ul>
 
 <h3>ved_analytics.js</h3>
 <p>
-    You can use <code>ved_analytics.js</code> to decode the ved parameter directly from the <code>document.referrer</code>
+    You can use <a href="https://github.com/deedpolloffice/ved-decode/blob/master/ved_analytics.js">ved_analytics.js</a> to decode the ved parameter directly from the <code>document.referrer</code>
 <p>
     Load it like this:
 </p>
 
-<pre><code>
-&lt;!-- Include both these scripts or copy them into your main JavaScript file --&gt;
+<pre><code>&lt;!-- Include both these scripts or copy them into your main JavaScript file --&gt;
 &lt;!--[if lt IE 10]&gt;
     &lt;script type="text/javascript"
         src="http://veddecode.opensource.dpo.org.uk/js/base64-1.0.min.js"&gt;&lt;/script&gt;
@@ -71,7 +70,7 @@
 </code></pre>
 
 <p>
-    Note that the base64 library is necessary for Internet Explorer 9 and below.
+    Note that the <a href="http://code.google.com/p/stringencoders/source/browse/trunk/javascript/base64.js">base64</a> library is necessary for Internet Explorer 9 and below.
 <p>
     The script sets the global variable <code>VedDecode</code> which has the following properties:
 </p>
@@ -85,27 +84,27 @@
 </thead>
 <tbody>
     <tr>
-        <th>ved</th>
-        <td>object containing the raw ved parameter values</td>
+        <th>VedDecode.ved</th>
+        <td>(object) the raw ved parameter values</td>
     </tr>
     <tr>
-        <th>linkIndex</th>
+        <th>VedDecode.linkIndex</th>
         <td>(integer) position of link on page (starting from 1)</td>
     </tr>
     <tr>
-        <th>linkType</th>
+        <th>VedDecode.linkType</th>
         <td>(string) type of link (e.g. "breadcrumb", "sitelink")</td>
     </tr>
     <tr>
-        <th>resultPosition</th>
+        <th>VedDecode.resultPosition</th>
         <td>(integer) number of result on page (starting from 1)</td>
     </tr>
     <tr>
-        <th>subResultPosition</th>
+        <th>VedDecode.subResultPosition</th>
         <td>(integer) number of sub-result in set of results (starting from 1)</td>
     </tr>
     <tr>
-        <th>page</th>
+        <th>VedDecode.page</th>
         <td>(integer) page of results (starting from 1)</td>
     </tr>
 </tbody>
@@ -116,8 +115,8 @@
 </p>
 
 <ul>
-    <li>example for <a href="https://github.com/deedpolloffice/ved-decode/blob/master/example_ga.js">Analytics</a> (<code>ga.js</code)
-    <li>example for <a href="https://github.com/deedpolloffice/ved-decode/blob/master/example_universal_analytics.js">Universal Analytics</a> (<code>analytics.js</code)
+    <li>example for <a href="https://github.com/deedpolloffice/ved-decode/blob/master/example_ga.js">Analytics</a> (<code>ga.js</code>)
+    <li>example for <a href="https://github.com/deedpolloffice/ved-decode/blob/master/example_universal_analytics.js">Universal Analytics</a> (<code>analytics.js</code>)
 </ul>
 
 <h3>Copyright and Licence</h3>
