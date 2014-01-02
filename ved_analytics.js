@@ -1,5 +1,5 @@
 /**
-  This file is part of VED DECODE v1.0
+  This file is part of VED DECODE v1.1
 
   Copyright 2013 Deed Poll Office Ltd, UK
 
