@@ -71,7 +71,7 @@ var VedDecode = VedDecode || {};
 	    '1908': 'sponsored shopping result (right column of universal search)',
 	    '1907': 'sponsored shopping result thumbnail (right column of universal search)'
 	    },
-        matches = w.document.referrer.match(/[\/.]google\..*[?&]ved=([a-zA-Z0-9_-]+)\b/);
+        matches = w.document.referrer.match(/[\/.]google\..*[?&]ved=([a-zA-Z0-9_:,-]+)\b/);
 
     if (_.ved = matches && matches.length && ved_decode(matches[1]) || null) {
 	_.linkIndex         = getOneIndexedVal(_.ved[1]);
