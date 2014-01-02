@@ -63,10 +63,10 @@
 <pre><code>&lt;!-- Include both these scripts or copy them into your main JavaScript file --&gt;
 &lt;!--[if lt IE 10]&gt;
     &lt;script type="text/javascript"
-        src="http://veddecode.opensource.dpo.org.uk/js/base64-1.0.min.js"&gt;&lt;/script&gt;
+        src="http://veddecode.opensource.dpo.org.uk/js/base64-1.1.min.js"&gt;&lt;/script&gt;
 &lt;![endif]--&gt;
 &lt;script type="text/javascript"
-    src="http://veddecode.opensource.dpo.org.uk/js/ved_analytics-1.0.min.js"&gt;&lt;/script&gt;
+    src="http://veddecode.opensource.dpo.org.uk/js/ved_analytics-1.1.min.js"&gt;&lt;/script&gt;
 </code></pre>
 
 <p>
@@ -143,5 +143,44 @@
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
+
+    <!-- Google (Universal) Analytics -->
+
+    <!-- Include both these scripts or copy them into your main JavaScript file -->
+    <!--[if lt IE 10]>
+        <script type="text/javascript" src="/js/base64-1.1.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/js/ved_analytics-1.1.min.js"></script>
+
+    <!-- Analytics snippet -->
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-34092070-4', 'dpo.org.uk');
+
+        // Import ved data
+        // The custom variable code needs to go *before* recording the pageview
+        (function(w) {
+            if (w.VedDecode && w.VedDecode.ved) {
+                // Send pageview with custom dimension data
+                ga('set', {
+                    dimension1: getVedValue('linkIndex'),
+                    dimension2: getVedValue('linkType'),
+                    dimension3: getVedValue('resultPosition'),
+                    dimension4: getVedValue('subResultPosition'),
+                    dimension5: getVedValue('page')
+                    });
+            }
+            function getVedValue(key) {
+                var ret = w.VedDecode[key];
+                return ret ? ret + '' : '(not set)';
+            }
+        })(window);
+
+        ga('send', 'pageview');
+    </script>
   </body>
 </html>
