@@ -2,6 +2,7 @@
   This file is part of VED DECODE v1.1
 
   Copyright 2013 Deed Poll Office Ltd, UK
+  <https://deedpolloffice.com>
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -21,7 +22,7 @@
 if (!window.atob) window.atob = base64.decode;
 
 function ved_decode(ved) {
-    // Copyright 2013 Deed Poll Office Ltd, UK <http://deed-poll-office.org.uk>
+    // Copyright 2013 Deed Poll Office Ltd, UK <https://deedpolloffice.com>
     // Licensed under Apache Licence v2.0 <http://apache.org/licenses/LICENSE-2.0>
     var keys = { t: 2, r: 6, s: 7, i: 1 }, ret = {}, re, match;
     if (ved.match(/^1/)) {

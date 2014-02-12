@@ -2,7 +2,7 @@
 
 function ved_decode($ved)
 {
-    // Copyright 2013 Deed Poll Office Ltd, UK <http://deed-poll-office.org.uk>
+    // Copyright 2013 Deed Poll Office Ltd, UK <https://deedpolloffice.com>
     // Licensed under Apache Licence v2.0 <http://apache.org/licenses/LICENSE-2.0>
     $keys = array('t' => 2, 'r' => 6, 's' => 7, 'i' => 1);
     $ret  = array();
