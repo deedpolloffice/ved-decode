@@ -21,6 +21,8 @@
 var VedDecoded = VedDecoded || {};
 
 (function (_, global) {
+    'use strict';
+    
     var linkTypes = {
         '22'  : 'normal (universal) search result',
         '1146': 'normal result thumbnail (e.g. for an application, recipe, etc.)',
