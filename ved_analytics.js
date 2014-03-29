@@ -1,4 +1,5 @@
-/*jslint nomen: true */
+/*jslint nomen: true, browser: true*/
+/*global base64: false, VedDecoded: false*/
 /**
   This file is part of VED DECODE v1.1
 
@@ -22,7 +23,7 @@ var VedDecoded = VedDecoded || {};
 
 (function (_, global) {
     'use strict';
-    
+
     var linkTypes = {
         '22'  : 'normal (universal) search result',
         '1146': 'normal result thumbnail (e.g. for an application, recipe, etc.)',
@@ -76,34 +77,41 @@ var VedDecoded = VedDecoded || {};
         '1908': 'sponsored shopping result (right column of universal search)',
         '1907': 'sponsored shopping result thumbnail (right column of universal search)'
         },
-        matches = global.document.referrer.match(/[\/.]google\.[a-z]+/.*[?&]ved=([a-zA-Z0-9_:,-]+)\b/);
+        //matches = global.document.referrer.match(/[\/.]google\.[a-z]+/.*[?&]ved=([a-zA-Z0-9_:,-]+)\b/);
+        matches = global.document.referrer.match(/aa/);
 
     if (!global.atob) {
         global.atob = base64.decode;
     }
 
     function ved_decode(ved) {
-        var re, match,
+        var re, match, k,
             keys = { t: 2, r: 6, s: 7, i: 1 },
             ret = {};
 
         function varint_decode(vint) {
-            var ret = 0, i = 0;
-            for (; i < vint.length; ++i) ret += (vint.charCodeAt(i) & 0x7f) << (i * 7);
-            return ret;
+            var i,
+                r = 0;
+            for (i = 0; i < vint.length; i += 1) {
+                r += (vint.charCodeAt(i) & 0x7f) << (i * 7);
+            }
+            return r;
         }
 
         if (ved.match(/^1/)) {
             re = /([a-z]+):([0-9]+)/ig;
-            while ((match = re.exec(ved)) !== null)
-                ret[keys[match[1]] || match[1]] = parseInt(match[2], 10);
+            while ((match = re.exec(ved)) !== null) {
+                k = keys[match[1]] || match[1];
+                ret[k] = parseInt(match[2], 10);
+            }
             return ret;
         }
         ved = ved.replace(/_/, '+').replace('-', '/');
-        ved = w.atob((ved + "===").slice(1, ved.length + 3 - (ved.length + 2) % 4));
+        ved = global.atob((ved + "===").slice(1, ved.length + 3 - (ved.length + 2) % 4));
         re  = /([\x80-\xff]*[\x00-\x7f])([\x80-\xff]*[\x00-\x7f])/g;
-        while ((match = re.exec(ved)) !== null)
+        while ((match = re.exec(ved)) !== null) {
             ret[varint_decode(match[1]) >> 3] = varint_decode(match[2]);
+        }
         return ret;
     }
 
@@ -126,4 +134,4 @@ var VedDecoded = VedDecoded || {};
         }
     }
 
-})(VedDecoded, this);
+}(VedDecoded, this));
