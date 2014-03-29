@@ -1,3 +1,4 @@
+/*jslint nomen: true */
 /**
   This file is part of VED DECODE v1.1
 
@@ -53,8 +54,9 @@ var VedDecoded = VedDecoded || {};
         '295' : 'news result thumbnail',
         '2237': 'news result video thumbnail',
         '1532': 'news sub-result (i.e. the same story from a different site)',
-        '232' : 'patent result',
-        '235' : 'patent result thumbnail',
+        // duplicates
+        //'232' : 'patent result',
+        //'235' : 'patent result thumbnail',
         '1107': 'patent result “Overview” / “Related” / “Discuss” link',
         '371' : 'shopping search result',
         '311' : 'video result',
